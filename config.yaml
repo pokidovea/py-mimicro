@@ -1,0 +1,17 @@
+- domain: facebook.com:8080
+  resources:
+    - name: test1
+      path: /test1
+      responses:
+        - method: get
+          status: 404
+          content: "Not Found"
+        - method: post
+          status: 200
+          content: "OK"
+    - name: test2
+      path: /test2/{var}
+      responses:
+        - method: get
+          status: 200
+          content: "Hello, {var}!"
