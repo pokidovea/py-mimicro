@@ -2,7 +2,7 @@ from typing import Dict
 
 from aiohttp import web
 
-from views import add_override, remove_override, get_requests, get_handler
+from .views import add_override, remove_override, get_requests, get_handler
 
 
 def setup_service_routes(app: web.Application):

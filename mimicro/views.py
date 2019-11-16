@@ -2,7 +2,7 @@ from typing import Dict, Callable
 
 from aiohttp import web
 
-from store import overrides_storage, requests_storage
+from .store import overrides_storage, requests_storage
 
 
 async def add_override(request):
