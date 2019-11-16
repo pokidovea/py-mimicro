@@ -49,6 +49,21 @@ class ResourceOverrideStorage:
             if key == (domain, resource, method):
                 return override
 
+    async def remove(self, domain: str, resource: Optional[str], method: Optional[str]):
+        def keep(override) -> bool:
+            if override.domain != domain:
+                return True
+
+            if resource and override.resource != resource:
+                return True
+
+            if method and override.method != method:
+                return True
+
+            return False
+
+        self._storage = [item for item in self._storage if keep(item)]
+
     async def clean(self):
         self._storage = []
 

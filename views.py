@@ -10,10 +10,18 @@ async def add_override(request):
 
     await overrides_storage.add(**data)
 
-    return web.Response(text='OK')
+    return web.json_response('OK')
 
 
-async def list_requests(request):
+async def remove_override(request):
+    data = await request.json()
+
+    await overrides_storage.remove(**data)
+
+    return web.json_response('OK')
+
+
+async def get_requests(request):
     requests = [item.as_dict for item in requests_storage]
 
     return web.json_response(requests)

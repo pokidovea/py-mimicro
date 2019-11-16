@@ -2,12 +2,14 @@ from typing import Dict
 
 from aiohttp import web
 
-from views import add_override, list_requests, get_handler
+from views import add_override, remove_override, get_requests, get_handler
 
 
 def setup_service_routes(app: web.Application):
     app.router.add_post('/__service/override', add_override)
-    app.router.add_get('/__service/list-requests', list_requests)
+    app.router.add_delete('/__service/override', remove_override)
+
+    app.router.add_get('/__service/requests', get_requests)
 
 
 def setup_dynamic_routes(app: web.Application, config: Dict):
